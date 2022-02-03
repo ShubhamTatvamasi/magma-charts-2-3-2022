@@ -1,3 +1,4 @@
+{{/*
 # Copyright 2020 The Magma Authors.
 
 # This source code is licensed under the BSD-style license found in the
@@ -8,16 +9,12 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-apiVersion: v2
-appVersion: 1.0.0
-description: A Helm library chart for orchestrator modules
-name: orc8rlib
-version: 0.1.4
-type: library
-engine: gotpl
-sources:
-  - https://github.com/magma/magma
-keywords:
-  - magma
-  - orc8rlib
-dependencies: []
+*/}}
+
+{{- define "nms.template" -}}
+{{- $name := index . 0 -}}
+{{- $context := index . 1 -}}
+{{- $last := base $context.Template.Name }}
+{{- $filepath := $context.Template.Name | replace $last $name -}}
+{{ include $filepath $context }}
+{{- end -}}
